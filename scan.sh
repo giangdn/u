@@ -1,4 +1,6 @@
 #!/bin/sh
 for f in /usr/bin/*; do
-  busybox grep -l Titan "$f" 2>/dev/null && busybox basename "$f"
+  if busybox grep -q Titan "$f" 2>/dev/null; then
+    busybox basename "$f"
+  fi
 done > result.txt
